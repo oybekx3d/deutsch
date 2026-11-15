@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B0F19"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="url(#bgGrad)"/>
+  <!-- Card shape -->
+  <rect x="28" y="32" width="136" height="128" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="3"/>
+  <!-- German color stripes on card top -->
+  <path d="M 32 44 Q 32 36 40 36 L 152 36 Q 160 36 160 44 L 160 52 L 32 52 Z" fill="#111827"/>
+  <rect x="32" y="52" width="128" height="6" fill="#EF4444"/>
+  <rect x="32" y="58" width="128" height="6" fill="#FBBF24"/>
+  <!-- German W letter -->
+  <path d="M 52 82 L 66 132 L 80 94 L 96 132 L 110 82" fill="none" stroke="#F8FAFC" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 5K badge -->
+  <rect x="114" y="104" width="46" height="24" rx="12" fill="#10B981"/>
+  <text x="137" y="121" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">5K</text>
+  <!-- Sparkle/Flame dot -->
+  <circle cx="148" cy="80" r="5" fill="#FBBF24"/>
+</svg>

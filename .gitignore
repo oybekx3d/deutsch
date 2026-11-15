@@ -1,0 +1,44 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+
+# Tool & Assistant Internal Directories
+.agy/
+.gemini/
+
+# Node & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Raw Vocabulary Source & Conversion Files (keep data/words.json)
+raw_words.*
+*.tsv
+*.csv
+sample_test.*
+
+# User Backup & Export Files
+wortmeister-5000-backup-*.json
+
+# Logs & Temporary Files
+*.log
+*.tmp
+.cache/
+dist/
+build/

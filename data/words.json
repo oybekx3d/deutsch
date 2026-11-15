@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "de": "sein",
+    "article": "",
+    "plural": "",
+    "en": "to be",
+    "pos": "verb",
+    "exDe": "Das Wetter ist heute wirklich schön.",
+    "exEn": "The weather is really nice today."
+  },
+  {
+    "id": 2,
+    "de": "haben",
+    "article": "",
+    "plural": "",
+    "en": "to have",
+    "pos": "verb",
+    "exDe": "Ich habe viel Zeit für meine Hobbys.",
+    "exEn": "I have plenty of time for my hobbies."
+  },
+  {
+    "id": 3,
+    "de": "werden",
+    "article": "",
+    "plural": "",
+    "en": "to become, will",
+    "pos": "verb",
+    "exDe": "Im Herbst wird es langsam kühler.",
+    "exEn": "In autumn it gradually becomes cooler."
+  },
+  {
+    "id": 4,
+    "de": "Jahr",
+    "article": "das",
+    "plural": "Jahre",
+    "en": "year",
+    "pos": "noun",
+    "exDe": "Wir reisen jedes Jahr nach Berlin.",
+    "exEn": "We travel to Berlin every year."
+  },
+  {
+    "id": 5,
+    "de": "können",
+    "article": "",
+    "plural": "",
+    "en": "can, to be able to",
+    "pos": "verb",
+    "exDe": "Kannst du Deutsch und Englisch sprechen?",
+    "exEn": "Can you speak German and English?"
+  },
+  {
+    "id": 6,
+    "de": "Mann",
+    "article": "der",
+    "plural": "Männer",
+    "en": "man, husband",
+    "pos": "noun",
+    "exDe": "Der Mann liest ein interessantes Buch.",
+    "exEn": "The man is reading an interesting book."
+  },
+  {
+    "id": 7,
+    "de": "müssen",
+    "article": "",
+    "plural": "",
+    "en": "must, to have to",
+    "pos": "verb",
+    "exDe": "Ich muss morgen früh aufstehen.",
+    "exEn": "I have to get up early tomorrow."
+  },
+  {
+    "id": 8,
+    "de": "Zeit",
+    "article": "die",
+    "plural": "Zeiten",
+    "en": "time",
+    "pos": "noun",
+    "exDe": "Die Zeit vergeht wie im Flug.",
+    "exEn": "Time flies by so quickly."
+  },
+  {
+    "id": 9,
+    "de": "sagen",
+    "article": "",
+    "plural": "",
+    "en": "to say, to tell",
+    "pos": "verb",
+    "exDe": "Was hast du gerade zu ihm gesagt?",
+    "exEn": "What did you just say to him?"
+  },
+  {
+    "id": 10,
+    "de": "Frau",
+    "article": "die",
+    "plural": "Frauen",
+    "en": "woman, wife, Ms.",
+    "pos": "noun",
+    "exDe": "Die Frau arbeitet als Architektin.",
+    "exEn": "The woman works as an architect."
+  },
+  {
+    "id": 11,
+    "de": "machen",
+    "article": "",
+    "plural": "",
+    "en": "to make, to do",
+    "pos": "verb",
+    "exDe": "Was machst du heute Abend nach der Arbeit?",
+    "exEn": "What are you doing tonight after work?"
+  },
+  {
+    "id": 12,
+    "de": "Tag",
+    "article": "der",
+    "plural": "Tage",
+    "en": "day",
+    "pos": "noun",
+    "exDe": "Heute ist ein wunderbarer sonniger Tag.",
+    "exEn": "Today is a wonderful sunny day."
+  },
+  {
+    "id": 13,
+    "de": "geben",
+    "article": "",
+    "plural": "",
+    "en": "to give",
+    "pos": "verb",
+    "exDe": "Es gibt viele spannende Möglichkeiten hier.",
+    "exEn": "There are many exciting opportunities here."
+  },
+  {
+    "id": 14,
+    "de": "Kind",
+    "article": "das",
+    "plural": "Kinder",
+    "en": "child",
+    "pos": "noun",
+    "exDe": "Das Kind spielt fröhlich im Garten.",
+    "exEn": "The child is playing happily in the garden."
+  },
+  {
+    "id": 15,
+    "de": "gut",
+    "article": "",
+    "plural": "",
+    "en": "good, well",
+    "pos": "adj",
+    "exDe": "Das ist eine sehr gute Idee.",
+    "exEn": "That is a very good idea."
+  },
+  {
+    "id": 16,
+    "de": "Haus",
+    "article": "das",
+    "plural": "Häuser",
+    "en": "house, building",
+    "pos": "noun",
+    "exDe": "Wir haben ein schönes altes Haus gekauft.",
+    "exEn": "We bought a beautiful old house."
+  },
+  {
+    "id": 17,
+    "de": "wollen",
+    "article": "",
+    "plural": "",
+    "en": "to want",
+    "pos": "verb",
+    "exDe": "Wir wollen am Wochenende wandern gehen.",
+    "exEn": "We want to go hiking this weekend."
+  },
+  {
+    "id": 18,
+    "de": "neu",
+    "article": "",
+    "plural": "",
+    "en": "new",
+    "pos": "adj",
+    "exDe": "Er hat sich einen neuen Laptop gekauft.",
+    "exEn": "He bought himself a new laptop."
+  },
+  {
+    "id": 19,
+    "de": "Weg",
+    "article": "der",
+    "plural": "Wege",
+    "en": "way, path",
+    "pos": "noun",
+    "exDe": "Der Weg durch den Wald ist wunderschön.",
+    "exEn": "The path through the forest is gorgeous."
+  },
+  {
+    "id": 20,
+    "de": "kommen",
+    "article": "",
+    "plural": "",
+    "en": "to come",
+    "pos": "verb",
+    "exDe": "Wann kommst du heute nach Hause?",
+    "exEn": "When are you coming home today?"
+  },
+  {
+    "id": 21,
+    "de": "Hand",
+    "article": "die",
+    "plural": "Hände",
+    "en": "hand",
+    "pos": "noun",
+    "exDe": "Sie hielt seine Hand ganz fest.",
+    "exEn": "She held his hand very tightly."
+  },
+  {
+    "id": 22,
+    "de": "groß",
+    "article": "",
+    "plural": "",
+    "en": "big, large, tall",
+    "pos": "adj",
+    "exDe": "Hamburg hat einen großen Hafen.",
+    "exEn": "Hamburg has a large port."
+  },
+  {
+    "id": 23,
+    "de": "gehen",
+    "article": "",
+    "plural": "",
+    "en": "to go, to walk",
+    "pos": "verb",
+    "exDe": "Wir gehen jeden Morgen zusammen spazieren.",
+    "exEn": "We go for a walk together every morning."
+  },
+  {
+    "id": 24,
+    "de": "Leben",
+    "article": "das",
+    "plural": "Leben",
+    "en": "life",
+    "pos": "noun",
+    "exDe": "Das Leben steckt voller Überraschungen.",
+    "exEn": "Life is full of surprises."
+  },
+  {
+    "id": 25,
+    "de": "wissen",
+    "article": "",
+    "plural": "",
+    "en": "to know (a fact)",
+    "pos": "verb",
+    "exDe": "Weißt du schon, wer das Spiel gewonnen hat?",
+    "exEn": "Do you already know who won the game?"
+  },
+  {
+    "id": 26,
+    "de": "Stadt",
+    "article": "die",
+    "plural": "Städte",
+    "en": "city, town",
+    "pos": "noun",
+    "exDe": "München ist eine lebendige Stadt in Bayern.",
+    "exEn": "Munich is a vibrant city in Bavaria."
+  },
+  {
+    "id": 27,
+    "de": "sehen",
+    "article": "",
+    "plural": "",
+    "en": "to see, to watch",
+    "pos": "verb",
+    "exDe": "Ich habe gestern einen tollen Film gesehen.",
+    "exEn": "I saw a great movie yesterday."
+  },
+  {
+    "id": 28,
+    "de": "Freund",
+    "article": "der",
+    "plural": "Freunde",
+    "en": "friend, boyfriend",
+    "pos": "noun",
+    "exDe": "Ein guter Freund hilft immer in der Not.",
+    "exEn": "A good friend always helps in time of need."
+  },
+  {
+    "id": 29,
+    "de": "alt",
+    "article": "",
+    "plural": "",
+    "en": "old",
+    "pos": "adj",
+    "exDe": "Dieses alte Schloss stammt aus dem 16. Jahrhundert.",
+    "exEn": "This old castle dates from the 16th century."
+  },
+  {
+    "id": 30,
+    "de": "Wasser",
+    "article": "das",
+    "plural": "Wässer",
+    "en": "water",
+    "pos": "noun",
+    "exDe": "Bitte trinken Sie ausreichend frisches Wasser.",
+    "exEn": "Please drink enough fresh water."
+  },
+  {
+    "id": 31,
+    "de": "lassen",
+    "article": "",
+    "plural": "",
+    "en": "to let, to allow, to leave",
+    "pos": "verb",
+    "exDe": "Lass uns heute draußen im Garten essen.",
+    "exEn": "Let's eat outside in the garden today."
+  },
+  {
+    "id": 32,
+    "de": "Kopf",
+    "article": "der",
+    "plural": "Köpfe",
+    "en": "head",
+    "pos": "noun",
+    "exDe": "Er schüttelte nachdenklich den Kopf.",
+    "exEn": "He shook his head thoughtfully."
+  },
+  {
+    "id": 33,
+    "de": "stehen",
+    "article": "",
+    "plural": "",
+    "en": "to stand",
+    "pos": "verb",
+    "exDe": "Die Kaffeemaschine steht auf dem Küchentisch.",
+    "exEn": "The coffee machine is standing on the kitchen table."
+  },
+  {
+    "id": 34,
+    "de": "Mutter",
+    "article": "die",
+    "plural": "Mütter",
+    "en": "mother",
+    "pos": "noun",
+    "exDe": "Meine Mutter kocht die beste Gemüsesuppe.",
+    "exEn": "My mother cooks the best vegetable soup."
+  },
+  {
+    "id": 35,
+    "de": "finden",
+    "article": "",
+    "plural": "",
+    "en": "to find, to think/consider",
+    "pos": "verb",
+    "exDe": "Wo hast du deinen verlorenen Schlüssel gefunden?",
+    "exEn": "Where did you find your lost key?"
+  },
+  {
+    "id": 36,
+    "de": "Bild",
+    "article": "das",
+    "plural": "Bilder",
+    "en": "picture, image",
+    "pos": "noun",
+    "exDe": "Das Bild an der Wand ist ein Meisterwerk.",
+    "exEn": "The picture on the wall is a masterpiece."
+  },
+  {
+    "id": 37,
+    "de": "bleiben",
+    "article": "",
+    "plural": "",
+    "en": "to stay, to remain",
+    "pos": "verb",
+    "exDe": "Wir bleiben noch zwei Tage in den Bergen.",
+    "exEn": "We are staying another two days in the mountains."
+  },
+  {
+    "id": 38,
+    "de": "Auge",
+    "article": "das",
+    "plural": "Augen",
+    "en": "eye",
+    "pos": "noun",
+    "exDe": "Sie hat strahlend blaue Augen.",
+    "exEn": "She has radiant blue eyes."
+  },
+  {
+    "id": 39,
+    "de": "liegen",
+    "article": "",
+    "plural": "",
+    "en": "to lie, to be situated",
+    "pos": "verb",
+    "exDe": "Das Buch liegt noch auf dem Schreibtisch.",
+    "exEn": "The book is still lying on the desk."
+  },
+  {
+    "id": 40,
+    "de": "Name",
+    "article": "der",
+    "plural": "Namen",
+    "en": "name",
+    "pos": "noun",
+    "exDe": "Wie wird dein Nachname genau buchstabiert?",
+    "exEn": "How is your last name spelled exactly?"
+  },
+  {
+    "id": 41,
+    "de": "Arbeit",
+    "article": "die",
+    "plural": "Arbeiten",
+    "en": "work, job",
+    "pos": "noun",
+    "exDe": "Er beginnt seine Arbeit pünktlich um acht Uhr.",
+    "exEn": "He starts his work promptly at eight o'clock."
+  },
+  {
+    "id": 42,
+    "de": "klein",
+    "article": "",
+    "plural": "",
+    "en": "small, little",
+    "pos": "adj",
+    "exDe": "In dem kleinen Café gibt es leckeren Kuchen.",
+    "exEn": "In the small café there is delicious cake."
+  },
+  {
+    "id": 43,
+    "de": "heißen",
+    "article": "",
+    "plural": "",
+    "en": "to be called, to mean",
+    "pos": "verb",
+    "exDe": "Ich heiße Lukas und komme aus Österreich.",
+    "exEn": "My name is Lukas and I come from Austria."
+  },
+  {
+    "id": 44,
+    "de": "Geld",
+    "article": "das",
+    "plural": "Gelder",
+    "en": "money",
+    "pos": "noun",
+    "exDe": "Er spart Geld für seine nächste Urlaubsreise.",
+    "exEn": "He is saving money for his next vacation."
+  },
+  {
+    "id": 45,
+    "de": "denken",
+    "article": "",
+    "plural": "",
+    "en": "to think",
+    "pos": "verb",
+    "exDe": "Ich denke oft an unsere schöne gemeinsame Zeit.",
+    "exEn": "I often think about our wonderful time together."
+  },
+  {
+    "id": 46,
+    "de": "Frage",
+    "article": "die",
+    "plural": "Fragen",
+    "en": "question",
+    "pos": "noun",
+    "exDe": "Darf ich Ihnen eine kurze Frage stellen?",
+    "exEn": "May I ask you a brief question?"
+  },
+  {
+    "id": 47,
+    "de": "nehmen",
+    "article": "",
+    "plural": "",
+    "en": "to take",
+    "pos": "verb",
+    "exDe": "Nimmst du den Bus oder fährst du mit dem Zug?",
+    "exEn": "Are you taking the bus or riding by train?"
+  },
+  {
+    "id": 48,
+    "de": "schön",
+    "article": "",
+    "plural": "",
+    "en": "beautiful, nice, lovely",
+    "pos": "adj",
+    "exDe": "Vielen Dank für den schönen Abend!",
+    "exEn": "Thank you very much for the lovely evening!"
+  },
+  {
+    "id": 49,
+    "de": "Zimmer",
+    "article": "das",
+    "plural": "Zimmer",
+    "en": "room",
+    "pos": "noun",
+    "exDe": "Das Zimmer hat ein großes Fenster zum Park.",
+    "exEn": "The room has a large window facing the park."
+  },
+  {
+    "id": 50,
+    "de": "Vater",
+    "article": "der",
+    "plural": "Väter",
+    "en": "father",
+    "pos": "noun",
+    "exDe": "Mein Vater liest am Sonntag gern die Zeitung.",
+    "exEn": "My father likes to read the newspaper on Sunday."
+  }
+]

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0B0F19">
+  <meta name="description" content="WortMeister 5000 — Master the 5,000 most frequent German words with spaced repetition, gender color-coding, and offline PWA capability.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="WortMeister">
+
+  <title>WortMeister 5000 — Top 5,000 German Words</title>
+
+  <!-- PWA Manifest & App Icons -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/svg+xml" href="./icons/icon-192.svg">
+  <link rel="apple-touch-icon" href="./icons/icon-192.svg">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <!-- Global App Shell -->
+  <div id="app-container">
+    <!-- Header Navigation -->
+    <header class="app-header">
+      <div class="header-inner">
+        <!-- Brand / Logo -->
+        <a href="#dashboard" class="brand-wrapper">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#F8FAFC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6l4 12 4-9 4 9 4-12"></path>
+            </svg>
+          </div>
+          <span class="brand-title">
+            WortMeister
+            <span class="brand-badge">5000</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Bar -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <a href="#dashboard" class="nav-link active" id="nav-desktop-dashboard">
+            <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="#study" class="nav-link" id="nav-desktop-study">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg>
+            <span>Study Cards</span>
+          </a>
+          <a href="#browser" class="nav-link" id="nav-desktop-browser">
+            <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+            <span>Dictionary</span>
+          </a>
+          <a href="#settings" class="nav-link" id="nav-desktop-settings">
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <!-- Right Header Items -->
+        <div class="header-actions">
+          <!-- Streak Pill Indicator -->
+          <div class="streak-pill" id="header-streak-pill" title="Current Day Streak">
+            <svg viewBox="0 0 24 24"><path d="M12 23c-4.97 0-9-3.8-9-8.5 0-3.37 2.05-6.57 4.24-8.86a1 1 0 0 1 1.63.48c.36 1.76 1.25 3.33 2.5 4.46.22-1.78.96-3.88 2.25-5.63a1 1 0 0 1 1.76.38c.67 3.23 2.76 5.8 4.62 8.15C20.48 15.34 21 16.92 21 18.5c0 4.7-4.03 8.5-9 8.5z"/></svg>
+            <span id="header-streak-count">0</span>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="icon-btn" id="btn-theme-toggle" title="Toggle Light / Dark theme" aria-label="Toggle theme">
+            <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- ================================================================== -->
+      <!-- VIEW 1: DASHBOARD -->
+      <!-- ================================================================== -->
+      <section id="view-dashboard" class="view active">
+        <div class="dashboard-grid">
+          <!-- Hero Streak & Daily Goal Card -->
+          <div class="hero-streak-card">
+            <div class="hero-header">
+              <div class="hero-streak-stats">
+                <div class="streak-flame-wrapper" id="dash-streak-flame">
+                  <svg viewBox="0 0 24 24"><path d="M12 23c-4.97 0-9-3.8-9-8.5 0-3.37 2.05-6.57 4.24-8.86a1 1 0 0 1 1.63.48c.36 1.76 1.25 3.33 2.5 4.46.22-1.78.96-3.88 2.25-5.63a1 1 0 0 1 1.76.38c.67 3.23 2.76 5.8 4.62 8.15C20.48 15.34 21 16.92 21 18.5c0 4.7-4.03 8.5-9 8.5z"/></svg>
+                </div>
+                <div class="streak-digits">
+                  <span class="streak-count" id="dash-streak-count">0</span>
+                  <span class="streak-label">Day Streak</span>
+                </div>
+              </div>
+              <div class="streak-longest" id="dash-longest-streak">Longest: 0 days</div>
+            </div>
+
+            <!-- Daily Goal Progress -->
+            <div class="daily-goal-section">
+              <div class="daily-goal-info">
+                <span>Today's Study Goal</span>
+                <span id="dash-goal-text">0 / 15 cards</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="dash-goal-bar-fill" style="width: 0%;"></div>
+              </div>
+              <div class="streak-status-banner" id="dash-streak-banner">
+                Keep going! 15 more reviews to lock in today's streak.
+              </div>
+            </div>
+          </div>
+
+          <!-- 14-Day Activity Strip Card -->
+          <div class="activity-card">
+            <div class="activity-header">
+              <h2 class="card-heading">
+                <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+                <span>Last 14 Days Activity</span>
+              </h2>
+            </div>
+            <div class="activity-strip" id="dash-activity-strip">
+              <!-- Dynamically populated 14 bars -->
+            </div>
+          </div>
+
+          <!-- 5,000-Word Mastery Bar Card -->
+          <div class="mastery-card">
+            <div class="activity-header">
+              <h2 class="card-heading">
+                <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z"/></svg>
+                <span>5,000-Word Mastery Pipeline</span>
+              </h2>
+            </div>
+            <div class="mastery-bar-container" id="dash-mastery-bar">
+              <div class="mastery-segment mastered" style="width: 0%;"></div>
+              <div class="mastery-segment learning" style="width: 0%;"></div>
+              <div class="mastery-segment unseen" style="width: 100%;"></div>
+            </div>
+            <div class="mastery-legend">
+              <div class="legend-item">
+                <div class="legend-dot mastered"></div>
+                <span>Mastered (Box 5): <strong id="dash-mastered-pct">0%</strong></span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot learning"></div>
+                <span>Learning (Boxes 1–4): <strong id="dash-learning-pct">0%</strong></span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-dot unseen"></div>
+                <span>Unseen: <strong id="dash-unseen-pct">100%</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Stat Cards Grid -->
+          <div class="stat-cards-grid">
+            <div class="stat-card">
+              <span class="stat-card-title">Due Now</span>
+              <span class="stat-card-val" id="stat-due-now">0</span>
+              <span class="stat-card-sub">Ready for review</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card-title">New Today</span>
+              <span class="stat-card-val" id="stat-new-today">20</span>
+              <span class="stat-card-sub">Remaining allowance</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card-title">Learning</span>
+              <span class="stat-card-val" id="stat-learning">0</span>
+              <span class="stat-card-sub">In Leitner boxes 1–4</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card-title">Mastered</span>
+              <span class="stat-card-val" id="stat-mastered">0</span>
+              <span class="stat-card-sub">In Leitner box 5</span>
+            </div>
+          </div>
+
+          <!-- Dashboard Action CTAs -->
+          <div class="dashboard-actions">
+            <button class="btn-primary" id="btn-start-session">
+              <svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z"/></svg>
+              <span>Start Today's Session</span>
+            </button>
+            <button class="btn-secondary" id="btn-quick-practice">
+              <svg viewBox="0 0 24 24" width="20" height="20"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+              <span>Quick Practice (15 Words)</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- VIEW 2: STUDY SESSION -->
+      <!-- ================================================================== -->
+      <section id="view-study" class="view">
+        <div class="study-container">
+          <!-- Session Top Header -->
+          <div class="session-header">
+            <button class="session-exit-btn" id="btn-exit-session" title="Exit to Dashboard (Shortcut: Esc)">
+              <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              <span>Exit</span>
+            </button>
+            <div class="session-progress-wrapper">
+              <div class="session-progress-text">
+                <span id="study-progress-text">Card 1 of 20</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="study-session-progress" style="width: 0%;"></div>
+              </div>
+            </div>
+            <div class="session-accuracy-badge" id="study-accuracy-badge">100% Acc</div>
+          </div>
+
+          <!-- 3D Flashcard Scene -->
+          <div class="flashcard-scene" id="flashcard-scene">
+            <div class="flashcard-inner" id="flashcard-inner" data-gender="other">
+              <!-- Front Face -->
+              <div class="flashcard-face flashcard-front" id="card-front">
+                <!-- Populated dynamically -->
+              </div>
+
+              <!-- Back Face -->
+              <div class="flashcard-face flashcard-back" id="card-back">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Spaced Repetition Grading Grid (Revealed after flip) -->
+          <div class="grading-container" id="grading-container">
+            <button class="grade-btn again" id="grade-again">
+              <span class="grade-label">
+                <span>Again</span>
+                <span class="kbd-hint">[1]</span>
+              </span>
+              <span class="grade-interval">&lt; 10m</span>
+            </button>
+
+            <button class="grade-btn hard" id="grade-hard">
+              <span class="grade-label">
+                <span>Hard</span>
+                <span class="kbd-hint">[2]</span>
+              </span>
+              <span class="grade-interval">1d</span>
+            </button>
+
+            <button class="grade-btn good" id="grade-good">
+              <span class="grade-label">
+                <span>Good</span>
+                <span class="kbd-hint">[3]</span>
+              </span>
+              <span class="grade-interval">3d</span>
+            </button>
+
+            <button class="grade-btn easy" id="grade-easy">
+              <span class="grade-label">
+                <span>Easy</span>
+                <span class="kbd-hint">[4]</span>
+              </span>
+              <span class="grade-interval">7d</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- VIEW 3: 5,000-WORD BROWSER / DICTIONARY -->
+      <!-- ================================================================== -->
+      <section id="view-browser" class="view">
+        <div class="browser-container">
+          <!-- Search & Filter Controls -->
+          <div class="browser-header-row">
+            <div class="search-bar-wrapper">
+              <svg class="search-icon" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+              <input type="text" id="browser-search-input" class="search-input" placeholder="Search German (Haus, ä/oe/ue/ss) or English..." autocomplete="off">
+              <button class="clear-search-btn" id="btn-clear-search" title="Clear search">×</button>
+            </div>
+            <div class="filters-bar">
+              <select id="filter-srs" class="filter-select" aria-label="Filter by SRS Status">
+                <option value="all">All Statuses</option>
+                <option value="due">Due Now</option>
+                <option value="learning">Learning (Box 1–4)</option>
+                <option value="mastered">Mastered (Box 5)</option>
+                <option value="unseen">Unseen Words</option>
+              </select>
+
+              <select id="filter-gender" class="filter-select" aria-label="Filter by Gender or POS">
+                <option value="all">All Genders & POS</option>
+                <option value="der">der (Masculine)</option>
+                <option value="die">die (Feminine)</option>
+                <option value="das">das (Neuter)</option>
+                <option value="other">Verbs & Adjectives</option>
+              </select>
+
+              <select id="filter-band" class="filter-select" aria-label="Filter by Frequency Band">
+                <option value="all">All Ranks (1–5000)</option>
+                <option value="1-500">Rank 1–500 (Core)</option>
+                <option value="501-1000">Rank 501–1000</option>
+                <option value="1001-2000">Rank 1001–2000</option>
+                <option value="2001-3500">Rank 2001–3500</option>
+                <option value="3501-5000">Rank 3501–5000</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="browser-count-indicator" id="browser-count-indicator">
+            Showing words...
+          </div>
+
+          <!-- Virtualized / Chunked Word List Container -->
+          <div class="word-list" id="word-list-container">
+            <!-- Appended in batches of 50 -->
+          </div>
+
+          <!-- Infinite Scroll Sentinel & Fallback Load More -->
+          <div class="sentinel-wrapper">
+            <button class="load-more-btn" id="btn-load-more" style="display: none;">Load Next 50 Words</button>
+            <div id="browser-sentinel" style="height: 10px;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================== -->
+      <!-- VIEW 4: SETTINGS & BACKUP -->
+      <!-- ================================================================== -->
+      <section id="view-settings" class="view">
+        <div class="settings-container">
+          <!-- Study Preferences -->
+          <div class="settings-card">
+            <h2 class="card-heading">
+              <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+              <span>Study Preferences</span>
+            </h2>
+
+            <div class="settings-group">
+              <!-- Daily New Words Limit -->
+              <div class="settings-row">
+                <div class="settings-label-block">
+                  <span class="settings-label">Daily New Words Limit</span>
+                  <span class="settings-subtext">How many new words to introduce per day</span>
+                </div>
+                <div class="slider-control-block">
+                  <input type="range" id="slider-daily-new" class="settings-slider" min="5" max="100" step="5" value="20">
+                  <span class="slider-val-badge" id="val-daily-new">20</span>
+                </div>
+              </div>
+
+              <!-- Daily Streak Goal -->
+              <div class="settings-row">
+                <div class="settings-label-block">
+                  <span class="settings-label">Daily Streak Goal (Reviews)</span>
+                  <span class="settings-subtext">Cards to review each day to maintain streak</span>
+                </div>
+                <div class="slider-control-block">
+                  <input type="range" id="slider-daily-goal" class="settings-slider" min="5" max="100" step="5" value="15">
+                  <span class="slider-val-badge" id="val-daily-goal">15</span>
+                </div>
+              </div>
+
+              <!-- Study Direction -->
+              <div class="settings-row">
+                <div class="settings-label-block">
+                  <span class="settings-label">Study Direction</span>
+                  <span class="settings-subtext">Front face presentation mode</span>
+                </div>
+                <div class="segmented-control" role="group" aria-label="Study Direction">
+                  <button type="button" class="segmented-option active direction-option" data-direction="de-en">DE → EN</button>
+                  <button type="button" class="segmented-option direction-option" data-direction="en-de">EN → DE</button>
+                  <button type="button" class="segmented-option direction-option" data-direction="mixed">Mixed</button>
+                </div>
+              </div>
+
+              <!-- Auto-Audio on Flip -->
+              <div class="settings-row">
+                <div class="settings-label-block">
+                  <span class="settings-label">Auto-Play German Pronunciation</span>
+                  <span class="settings-subtext">Speak German word aloud when card is flipped</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="toggle-auto-audio" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <!-- Theme Toggle -->
+              <div class="settings-row">
+                <div class="settings-label-block">
+                  <span class="settings-label">Light Theme</span>
+                  <span class="settings-subtext">Switch between Dark and Light mode</span>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="toggle-theme">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backup & Data Management -->
+          <div class="settings-card">
+            <h2 class="card-heading">
+              <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+              <span>Backup & Data Management</span>
+            </h2>
+            <p class="settings-subtext">
+              All learning progress is stored locally in your browser (sub-100KB footprint). Export your JSON backup to sync with your phone or other computers.
+            </p>
+
+            <div class="backup-actions-grid">
+              <button class="btn-backup" id="btn-export-backup">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                <span>Export JSON Backup</span>
+              </button>
+
+              <button class="btn-backup" id="btn-trigger-import">
+                <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+                <span>Import JSON Backup</span>
+              </button>
+              <input type="file" id="input-import-backup" accept=".json" style="display: none;">
+
+              <button class="btn-backup btn-danger" id="btn-reset-progress">
+                <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                <span>Reset All Learning Progress</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Bottom Navigation Bar (< 768px) -->
+    <nav class="bottom-nav" aria-label="Mobile Navigation">
+      <a href="#dashboard" class="bottom-nav-item active" id="nav-mobile-dashboard">
+        <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#study" class="bottom-nav-item" id="nav-mobile-study">
+        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg>
+        <span>Study</span>
+      </a>
+      <a href="#browser" class="bottom-nav-item" id="nav-mobile-browser">
+        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+        <span>Words</span>
+      </a>
+      <a href="#settings" class="bottom-nav-item" id="nav-mobile-settings">
+        <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Modal 1: Session Complete Summary -->
+    <div id="modal-session-complete" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-complete-title">
+      <div class="modal-dialog">
+        <div class="modal-icon-header">
+          <div class="modal-icon-bubble">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          </div>
+          <h2 class="modal-title" id="modal-complete-title">Session Complete!</h2>
+          <p class="modal-desc">Ausgezeichnet! You have finished all scheduled cards for this session.</p>
+        </div>
+
+        <div class="modal-stats-summary">
+          <div>
+            <div class="summary-stat-val" id="summary-cards-reviewed">0</div>
+            <div class="summary-stat-lbl">Cards Studied</div>
+          </div>
+          <div>
+            <div class="summary-stat-val" id="summary-accuracy">100%</div>
+            <div class="summary-stat-lbl">Accuracy</div>
+          </div>
+          <div>
+            <div class="summary-stat-val" id="summary-new-words">0</div>
+            <div class="summary-stat-lbl">New Learned</div>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-secondary" id="btn-bonus-session">Review 10 Bonus</button>
+          <button class="btn-primary" id="btn-finish-session">Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Reset Progress Confirmation -->
+    <div id="modal-reset-confirm" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-reset-title">
+      <div class="modal-dialog">
+        <div class="modal-icon-header">
+          <div class="modal-icon-bubble danger">
+            <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+          </div>
+          <h2 class="modal-title" id="modal-reset-title">Reset All Progress?</h2>
+          <p class="modal-desc">
+            This will permanently delete your spaced repetition schedules, mastery boxes, and daily streak history. Your custom settings will be preserved. This action cannot be undone.
+          </p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-secondary" id="btn-cancel-reset">Cancel</button>
+          <button class="btn-primary btn-danger" id="btn-confirm-reset">Yes, Reset All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main ES Module Entry Point -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
