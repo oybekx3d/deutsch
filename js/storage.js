@@ -1,9 +1,30 @@
 /**
- * WortMeister 5000 - Storage & Streak Engine
+ * German5K - Storage & Streak Engine
  * Compact localStorage persistence for 5,000 words.
  */
 
-export const STORAGE_KEY = 'wm5k_state_v1';
+export const STORAGE_KEY = 'german5k_state_v1';
+export const LEGACY_STORAGE_KEY = 'wm5k_state_v1';
+
+/**
+ * One-time migration check: if german5k_state_v1 does not exist in localStorage
+ * but legacy wm5k_state_v1 does, copy wm5k_state_v1 into german5k_state_v1 and
+ * remove wm5k_state_v1 so existing study progress and streaks are preserved.
+ */
+export function migrateLegacyStorage() {
+  try {
+    if (typeof localStorage === 'undefined') return;
+    if (!localStorage.getItem(STORAGE_KEY) && localStorage.getItem(LEGACY_STORAGE_KEY)) {
+      const legacyData = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (legacyData) {
+        localStorage.setItem(STORAGE_KEY, legacyData);
+        localStorage.removeItem(LEGACY_STORAGE_KEY);
+      }
+    }
+  } catch (err) {
+    console.warn('Storage migration failed:', err);
+  }
+}
 
 export function getLocalDateString(date = new Date()) {
   const y = date.getFullYear();
@@ -44,6 +65,7 @@ let activeState = null;
 
 export function loadState() {
   try {
+    migrateLegacyStorage();
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) {
       activeState = getDefaultState();
@@ -118,7 +140,7 @@ export function updateSettings(newSettings) {
   const state = getState();
   state.settings = { ...state.settings, ...newSettings };
   saveState(state);
-  window.dispatchEvent(new CustomEvent('wm5k:settings-changed', { detail: state.settings }));
+  window.dispatchEvent(new CustomEvent('german5k:settings-changed', { detail: state.settings }));
   return state.settings;
 }
 
@@ -162,7 +184,7 @@ export function recordCardReview(wordId, grade, newBox, intervalDays, isNewWord 
     state.streak.current = (state.streak.current || 0) + 1;
     state.streak.longest = Math.max(state.streak.longest || 0, state.streak.current);
     state.streak.lastGoalMetDate = todayStr;
-    window.dispatchEvent(new CustomEvent('wm5k:streak-achieved', {
+    window.dispatchEvent(new CustomEvent('german5k:streak-achieved', {
       detail: { currentStreak: state.streak.current }
     }));
   }
@@ -175,7 +197,7 @@ export function exportBackup() {
   const state = getState();
   const jsonStr = JSON.stringify(state, null, 2);
   const today = getLocalDateString();
-  const filename = `wortmeister-5000-backup-${today}.json`;
+  const filename = `german5k-backup-${today}.json`;
 
   const blob = new Blob([jsonStr], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -219,7 +241,7 @@ export function importBackup(jsonString) {
 
     saveState(validatedState);
     initStorage();
-    window.dispatchEvent(new CustomEvent('wm5k:data-imported'));
+    window.dispatchEvent(new CustomEvent('german5k:data-imported'));
     return { success: true };
   } catch (err) {
     console.error('Import error:', err);
@@ -233,7 +255,7 @@ export function resetAllProgress() {
   state.streak = defaults.streak;
   state.progress = {};
   saveState(state);
-  window.dispatchEvent(new CustomEvent('wm5k:progress-reset'));
+  window.dispatchEvent(new CustomEvent('german5k:progress-reset'));
   return state;
 }
 

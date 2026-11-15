@@ -1,6 +1,6 @@
 {
-  "name": "WortMeister 5000",
-  "short_name": "WortMeister",
+  "name": "German5K — Top 5000 German Words",
+  "short_name": "German5K",
   "description": "Master the 5,000 most frequent German words with spaced repetition",
   "start_url": "./index.html",
   "scope": "./",

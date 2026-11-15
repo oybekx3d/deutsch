@@ -34,7 +34,7 @@ raw_words.*
 sample_test.*
 
 # User Backup & Export Files
-wortmeister-5000-backup-*.json
+german5k-backup-*.json
 
 # Logs & Temporary Files
 *.log

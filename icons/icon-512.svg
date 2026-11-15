@@ -14,8 +14,8 @@
   <path d="M 84 118 Q 84 96 106 96 L 406 96 Q 428 96 428 118 L 428 140 L 84 140 Z" fill="#111827"/>
   <rect x="84" y="140" width="344" height="16" fill="#EF4444"/>
   <rect x="84" y="156" width="344" height="16" fill="#FBBF24"/>
-  <path d="M 138 218 L 176 352 L 214 250 L 256 352 L 294 218" fill="none" stroke="#F8FAFC" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="206" y="336" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="150" font-weight="900" text-anchor="middle">G</text>
   <rect x="304" y="278" width="124" height="64" rx="32" fill="#10B981"/>
-  <text x="366" y="322" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">5000</text>
+  <text x="366" y="322" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="34" font-weight="800" text-anchor="middle">5K</text>
   <circle cx="396" cy="214" r="14" fill="#FBBF24"/>
 </svg>

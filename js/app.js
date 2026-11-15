@@ -1,5 +1,5 @@
 /**
- * WortMeister 5000 — Main Application Controller & View Router
+ * German5K — Main Application Controller & View Router
  */
 
 import {
@@ -1046,7 +1046,7 @@ function setupEventListeners() {
   }
 
   // Streak Achieved Event
-  window.addEventListener('wm5k:streak-achieved', (e) => {
+  window.addEventListener('german5k:streak-achieved', (e) => {
     const streak = e.detail?.currentStreak || 1;
     showToast(`🔥 Streak Extended! ${streak} Day Streak Achieved!`, 'streak', 4000);
     renderDashboard();
@@ -1065,8 +1065,8 @@ async function initApp() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('./sw.js').then(
-        (reg) => console.log('WortMeister ServiceWorker registered:', reg.scope),
-        (err) => console.warn('WortMeister ServiceWorker registration failed:', err)
+        (reg) => console.log('German5K ServiceWorker registered:', reg.scope),
+        (err) => console.warn('German5K ServiceWorker registration failed:', err)
       );
     });
   }

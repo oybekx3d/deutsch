@@ -1,5 +1,5 @@
 /**
- * WortMeister 5000 - Web Speech API (de-DE) Pronunciation Engine
+ * German5K - Web Speech API (de-DE) Pronunciation Engine
  */
 
 let cachedVoice = null;

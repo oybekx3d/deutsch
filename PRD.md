@@ -1,4 +1,4 @@
-# WortMeister 5000 — Product Requirements Document (PRD) & Technical Specification
+# German5K — Product Requirements Document (PRD) & Technical Specification
 
 **Version:** 1.0.0  
 **Target Platform:** GitHub Pages (Static Web App + Offline PWA)  
@@ -9,7 +9,7 @@
 
 ## 1. Product Overview & Objectives
 
-**WortMeister 5000** is a fast, offline-capable static web application designed to help English speakers master the 5,000 most frequent German words. It operates entirely in the browser using a static `data/words.json` dataset and persists all learning progress, spaced repetition schedules, and daily streaks inside `localStorage` with one-click JSON export and import for cross-device syncing.
+**German5K** is a fast, offline-capable static web application designed to help English speakers master the 5,000 most frequent German words. It operates entirely in the browser using a static `data/words.json` dataset and persists all learning progress, spaced repetition schedules, and daily streaks inside `localStorage` with one-click JSON export and import for cross-device syncing.
 
 ### Core Engineering Goals
 1. **Zero-Cost, Zero-Build Hosting:** Runs directly from any GitHub Pages repository (`https://username.github.io/repo-name/`) using strictly relative asset paths (`./`).
@@ -275,7 +275,7 @@ The UI defaults to **Dark Mode** (`[data-theme="dark"]`) to reduce eye strain du
   * **Auto-Play German Audio on Flip:** Toggle switch (`On` / `Off`, default `On`).
   * **Theme:** Toggle switch (`Dark` / `Light`).
 * **Data Management (`localStorage` Backup & Restore):**
-  * **Export Progress (`.json`):** Triggers an instant browser file download named `wortmeister-5000-backup-YYYY-MM-DD.json`.
+  * **Export Progress (`.json`):** Triggers an instant browser file download named `german5k-backup-YYYY-MM-DD.json`.
   * **Import Progress (`.json`):** File picker accepting `.json`, validating schema integrity (`version`, `progress`, `streak`, `settings`), saving to `localStorage`, and refreshing state with a success toast.
   * **Reset All Progress:** Protected by a confirmation modal requiring the user to confirm deletion.
 
@@ -314,7 +314,7 @@ Let `today = Math.floor(Date.now() / 86400000)` and `currentBox` be `0` for unse
 ## 8. `localStorage` & Streak Engine Specification (`js/storage.js`)
 
 ### 8.1 Storage Key & Complete JSON Structure
-All application state is stored under a single `localStorage` key: **`wm5k_state_v1`**.
+All application state is stored under a single `localStorage` key: **`german5k_state_v1`** (with automatic migration from legacy storage keys).
 
 ```json
 {
@@ -368,7 +368,7 @@ All application state is stored under a single `localStorage` key: **`wm5k_state
      * Increment `state.streak.current += 1`.
      * Set `state.streak.longest = Math.max(state.streak.longest, state.streak.current)`.
      * Set `state.streak.lastGoalMetDate = today`.
-     * Dispatch a custom DOM event `wm5k:streak-achieved` to trigger the UI celebration toast and flame animation.
+     * Dispatch a custom DOM event `german5k:streak-achieved` to trigger the UI celebration toast and flame animation.
 
 ---
 
@@ -522,7 +522,7 @@ convert();
 To build the entire application in one command, save this file as `PRD.md` in your workspace and pass the prompt below to `agy CLI`:
 
 ```text
-Read PRD.md in the project root and implement the complete "WortMeister 5000" static web application following every architectural, UI token, color system, animation, SRS, streak, and localStorage specification in PRD.md.
+Read PRD.md in the project root and implement the complete "German5K" static web application following every architectural, UI token, color system, animation, SRS, streak, and localStorage specification in PRD.md.
 
 Generate all required files:
 1. index.html

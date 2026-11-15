@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wortmeister-5000-v1';
+const CACHE_NAME = 'german5k-cache-v1';
 const PRECACHE_ASSETS = [
   './',
   './index.html',

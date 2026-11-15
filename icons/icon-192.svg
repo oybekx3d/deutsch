@@ -21,8 +21,8 @@
   <path d="M 32 44 Q 32 36 40 36 L 152 36 Q 160 36 160 44 L 160 52 L 32 52 Z" fill="#111827"/>
   <rect x="32" y="52" width="128" height="6" fill="#EF4444"/>
   <rect x="32" y="58" width="128" height="6" fill="#FBBF24"/>
-  <!-- German W letter -->
-  <path d="M 52 82 L 66 132 L 80 94 L 96 132 L 110 82" fill="none" stroke="#F8FAFC" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- German G letter -->
+  <text x="76" y="126" fill="#F8FAFC" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="900" text-anchor="middle">G</text>
   <!-- 5K badge -->
   <rect x="114" y="104" width="46" height="24" rx="12" fill="#10B981"/>
   <text x="137" y="121" fill="#FFFFFF" font-family="system-ui, sans-serif" font-size="13" font-weight="800" text-anchor="middle">5K</text>

@@ -1,5 +1,5 @@
 /**
- * WortMeister 5000 - Spaced Repetition System (SRS)
+ * German5K - Spaced Repetition System (SRS)
  * Modified SM-2 / 5-box Leitner scheduler and queue engine.
  */
 

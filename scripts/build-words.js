@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * WortMeister 5000 — Automated 5,000-Word Dataset Pipeline
+ * German5K — Automated 5,000-Word Dataset Pipeline
  * 
  * Fetches frequency lists, parses, normalizes, enriches with grammatical gender (der/die/das),
  * plurals, parts of speech, English translations, and bilingual example sentences,
@@ -14,7 +14,7 @@ const path = require('path');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'words.json');
 const TARGET_WORD_COUNT = 5000;
 
-const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 WortMeister5000/1.0';
+const USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 German5K/1.0';
 
 // German morphological gender suffix rules
 function deduceGenderBySuffix(word) {
@@ -152,7 +152,7 @@ async function fetchFrequencyDatabase() {
 
 // Main execution pipeline
 async function main() {
-  console.log('=== WortMeister 5000: Dataset Generation Pipeline ===');
+  console.log('=== German5K: Dataset Generation Pipeline ===');
   
   // 1. Fetch Wiktionary list
   const wiktionaryWords = await fetchWiktionaryFrequencyList();
